@@ -26,6 +26,20 @@
       <!-- The datasource is deployed as WEB-INF/ticket-monster-ds.xml, you
          can find it in the source at src/main/webapp/WEB-INF/ticket-monster-ds.xml -->
       <jta-data-source>java:jboss/datasources/ticket-monsterDS</jta-data-source>
+      <class>org.jboss.examples.ticketmonster.model.Address</class>
+      <class>org.jboss.examples.ticketmonster.model.Booking</class>
+      <class>org.jboss.examples.ticketmonster.model.Event</class>
+      <class>org.jboss.examples.ticketmonster.model.EventCategory</class>
+      <class>org.jboss.examples.ticketmonster.model.MediaItem</class>
+      <class>org.jboss.examples.ticketmonster.model.Performance</class>
+      <class>org.jboss.examples.ticketmonster.model.Seat</class>
+      <class>org.jboss.examples.ticketmonster.model.Section</class>
+      <class>org.jboss.examples.ticketmonster.model.SectionAllocation</class>
+      <class>org.jboss.examples.ticketmonster.model.Show</class>
+      <class>org.jboss.examples.ticketmonster.model.Ticket</class>
+      <class>org.jboss.examples.ticketmonster.model.TicketCategory</class>
+      <class>org.jboss.examples.ticketmonster.model.TicketPrice</class>
+      <class>org.jboss.examples.ticketmonster.model.Venue</class>
       <properties>
          <!-- Properties for Hibernate -->
          <property name="hibernate.hbm2ddl.auto" value="create-drop" />

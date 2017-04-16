@@ -1,12 +1,13 @@
 package org.jboss.examples.ticketmonster.model;
 
-import javax.persistence.Entity;
 import java.io.Serializable;
-import javax.persistence.Id;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Column;
-import javax.persistence.Version;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -15,42 +16,59 @@ public class Event implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", updatable = false, nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Version
-	@Column(name = "version")
-	private int version;
+	
 
-	@Column
+	@Column(unique=true)
 	@NotNull
 	@Size(min = 5, max = 50, message = "An event's name must contain between 5 and 50 characters")
 	private String name;
 
 	@Column
+	@NotNull
 	@Size(min = 20, max = 10000, message = "An event's description must contain between 20 and 1000 characters")
 	private String description;
 
-	@Column
-	private boolean major;
+	@ManyToOne
+	private MediaItem mediaItem;
+	
+	@ManyToOne
+    @NotNull
+    private EventCategory category;
 
-	@Column
-	private String picture;
 
 	public Long getId() {
 		return this.id;
 	}
-
-	public void setId(final Long id) {
-		this.id = id;
+	
+	public String getName() {
+		return name;
 	}
 
-	public int getVersion() {
-		return this.version;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setVersion(final int version) {
-		this.version = version;
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public MediaItem getMediaItem() {
+        return mediaItem;
+    }
+
+    public void setMediaItem(MediaItem picture) {
+        this.mediaItem = picture;
+    }
+	
+	@Override
+	public String toString() {
+		return "Event [name=" + name + ", description=" + description + "]";
 	}
 
 	@Override
@@ -78,48 +96,8 @@ public class Event implements Serializable {
 		return result;
 	}
 
-	public String getName() {
-		return name;
-	}
+	
 
-	public void setName(String name) {
-		this.name = name;
-	}
 
-	public String getDescription() {
-		return description;
-	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public boolean isMajor() {
-		return major;
-	}
-
-	public void setMajor(boolean major) {
-		this.major = major;
-	}
-
-	public String getPicture() {
-		return picture;
-	}
-
-	public void setPicture(String picture) {
-		this.picture = picture;
-	}
-
-	@Override
-	public String toString() {
-		String result = getClass().getSimpleName() + " ";
-		if (name != null && !name.trim().isEmpty())
-			result += "name: " + name;
-		if (description != null && !description.trim().isEmpty())
-			result += ", description: " + description;
-		result += ", major: " + major;
-		if (picture != null && !picture.trim().isEmpty())
-			result += ", picture: " + picture;
-		return result;
-	}
 }
