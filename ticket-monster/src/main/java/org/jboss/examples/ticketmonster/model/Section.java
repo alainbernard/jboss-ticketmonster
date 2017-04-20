@@ -11,11 +11,13 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(columnNames={"name", "venue_id"}))
+@JsonIgnoreProperties("venue")
 public class Section implements Serializable {
 
     /* Declaration of fields */
@@ -55,7 +57,7 @@ public class Section implements Serializable {
 
     /**
      * <p>
-     * The venue to which this section belongs. The <code>@ManyToOne<code> JPA mapping establishes this relationship.
+     * The venue to which this section belongs. The <code>@ManyToOne</code> JPA mapping establishes this relationship.
      * </p>
      *
      * <p>

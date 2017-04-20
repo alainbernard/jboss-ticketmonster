@@ -46,25 +46,25 @@ public class MultivaluedHashMap<K, V> extends ForwardingMap<K, List<V>> implemen
     }
 
 	@Override
-	public void addAll(K arg0, V... arg1) {
+	public void addAll(K key, V... newValues) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void addAll(K arg0, List<V> arg1) {
+	public void addAll(K key, List<V> valueList) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void addFirst(K arg0, V arg1) {
+	public void addFirst(K key, V value) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public boolean equalsIgnoreValueOrder(MultivaluedMap<K, V> arg0) {
+	public boolean equalsIgnoreValueOrder(MultivaluedMap<K, V> otherMap) {
 		// TODO Auto-generated method stub
 		return false;
 	}
